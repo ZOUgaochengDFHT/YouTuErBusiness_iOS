@@ -1,0 +1,96 @@
+//
+//  PrefixHeader.pch
+//  YouTuEr
+//
+//  Created by ss on 17/2/19.
+//  Copyright © 2017年 ss. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "SRCommon.h"
+#import "SRManager.h"
+#import "SRDefines.h"
+#import "SRNetwork.h"
+#import "YTEUIKitExtension.h"
+#import "SRFoundationExtension.h"
+
+#import "ChatDemoUIDefine.h"
+
+// 第三方库
+
+#import <YYModel/YYModel.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "TTTAttributedLabel.h"
+#import <MJRefresh/MJRefresh.h>
+#import <Hyphenate/Hyphenate.h>
+#import <EaseUI/EaseUI.h>
+#import "UIViewController+HUD.h"
+//#import "EMAlertView.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Resource.h"
+#import "YouTuEr-Swift.h"
+
+#import "YTEUser.h"
+
+
+// 日志输出
+//#ifdef DEBUG // 开发阶段-DEBUG阶段使用Log
+//#define YTELog(...) NSLog(__VA_ARGS__)
+//#else // 发布阶段-上线阶段 移除Log
+//#define YTELog(...)
+//#endif
+
+// 设置FuncLog可以打印出类名,方法名,行数.
+#ifdef DEBUG // 开发阶段-DEBUG阶段使用Log
+#define YTELog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else // 发布阶段-上线阶段 移除Log
+#define YTELog(...)
+#endif
+
+// 方法输出
+#define YTELogFunc YTELog(@"%s", __func__);
+
+// 颜色
+#define YTEARGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define YTEDominantColor YTEARGBColor(50, 148, 255)
+#define YTERandomColor YTEARGBColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+
+#define YTEGlobalBGColor YTEARGBColor(238,238,238)
+
+#define YTEPreLabelColor YTEARGBColor(134,135,136)
+#define YTELabelBoldColor YTEARGBColor(82,83,84)
+
+#define YTETextGreenColor YTEARGBColor(39,184,144)
+
+#define YTEFont(s) [UIFont systemFontOfSize:s]
+
+
+// 导航栏+状态栏高度
+#define YTETopPad 64
+#define YTEStatusBarPad 20
+
+// 获得屏幕bounds
+#define YTEScreenBounds [UIScreen mainScreen].bounds
+#define YTEScreenBoundsHeight [UIScreen mainScreen].bounds.size.height
+#define YTEScreenBoundsWidth [UIScreen mainScreen].bounds.size.width
+#define YTETabBarHeight 49
+
+// 订单详情界面滑条动画时长
+#define YTEAnimationDefaultTime 0.3
+
+#define YTEAlertViewCornerRadius 10 //选择器的圆角
+
+// USER相关
+#define YTEUserInstance [YTEUser shareInstance]
+#define YTEUserClientId ([YTEUser shareInstance].clientId)
+
+
+// 基本数据类型转换成NSString
+#define YTEStringFromInt(value) [NSString stringWithFormat:@"%ld", (value)]
+#endif /* PrefixHeader_pch */

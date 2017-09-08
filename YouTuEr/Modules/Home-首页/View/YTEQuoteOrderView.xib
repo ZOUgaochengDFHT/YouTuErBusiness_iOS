@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YTEQuoteOrderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeN-Me-IHs" customClass="TTTAttributedLabel">
+                    <rect key="frame" x="0.0" y="40" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="HrB-zl-2ZN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" red="0.15294117647058825" green="0.72156862745098038" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gik-Wo-FMK">
+                    <rect key="frame" x="147.5" y="80" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="ZSa-F6-Xj2"/>
+                        <constraint firstAttribute="width" constant="80" id="Zxu-Zc-1ef"/>
+                    </constraints>
+                    <state key="normal" image="omerchart_quoteorder"/>
+                    <connections>
+                        <action selector="quoteOrder:" destination="iN0-l3-epB" eventType="touchUpInside" id="Dqn-qn-eOy"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOi-Wu-WS7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="VGY-RN-cU8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qeN-Me-IHs" secondAttribute="trailing" id="69V-32-Bsy"/>
+                <constraint firstItem="HOi-Wu-WS7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JCd-Ed-v5O"/>
+                <constraint firstItem="HOi-Wu-WS7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JaL-q2-v2J"/>
+                <constraint firstItem="gik-Wo-FMK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RVW-qT-NM3"/>
+                <constraint firstItem="qeN-Me-IHs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="Snc-Be-J7t"/>
+                <constraint firstItem="qeN-Me-IHs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fLs-7n-bHD"/>
+                <constraint firstAttribute="trailing" secondItem="HOi-Wu-WS7" secondAttribute="trailing" id="g8R-9v-qoM"/>
+                <constraint firstItem="gik-Wo-FMK" firstAttribute="top" secondItem="qeN-Me-IHs" secondAttribute="bottom" constant="10" id="kfZ-Jb-2gk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="countDownLabel" destination="qeN-Me-IHs" id="8io-5J-6DM"/>
+            </connections>
+            <point key="canvasLocation" x="63.5" y="323"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="omerchart_quoteorder" width="16" height="16"/>
+    </resources>
+</document>

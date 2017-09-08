@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YTEMineWalletViewController" customModule="YouTuEr" customModuleProvider="target">
+            <connections>
+                <outlet property="balanceLabel" destination="UjB-lO-Eqs" id="SEZ-fK-taV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-sr-PRF">
+                    <rect key="frame" x="123.5" y="120" width="128" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="7uO-nJ-5eR"/>
+                        <constraint firstAttribute="width" constant="128" id="pEo-uQ-tAl"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的余额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rwt-7k-ZsO">
+                    <rect key="frame" x="0.0" y="300" width="375" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Tkc-uP-rlw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjB-lO-Eqs">
+                    <rect key="frame" x="0.0" y="336" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="q6o-hr-QDp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLx-v0-D4W">
+                    <rect key="frame" x="20" y="599" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.28627450980392155" green="0.76078431372549016" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="7k9-bA-kjS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="申请提现">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="withdrawalsRequest:" destination="-1" eventType="touchUpInside" id="sHO-5S-5XF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="UjB-lO-Eqs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Ls-4l-oWW"/>
+                <constraint firstItem="OMI-sr-PRF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1lQ-rl-nss"/>
+                <constraint firstItem="OMI-sr-PRF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="661-7K-sgc"/>
+                <constraint firstItem="JLx-v0-D4W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="6bw-H5-NPB"/>
+                <constraint firstAttribute="trailing" secondItem="JLx-v0-D4W" secondAttribute="trailing" constant="20" id="77W-xM-uO1"/>
+                <constraint firstAttribute="trailing" secondItem="UjB-lO-Eqs" secondAttribute="trailing" id="dcM-8F-Wc7"/>
+                <constraint firstAttribute="trailing" secondItem="Rwt-7k-ZsO" secondAttribute="trailing" id="hFf-qU-y5y"/>
+                <constraint firstItem="Rwt-7k-ZsO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oGa-Jm-7RZ"/>
+                <constraint firstItem="Rwt-7k-ZsO" firstAttribute="top" secondItem="OMI-sr-PRF" secondAttribute="bottom" constant="52" id="wD3-Xc-LrH"/>
+                <constraint firstAttribute="bottom" secondItem="JLx-v0-D4W" secondAttribute="bottom" constant="28" id="xhN-5d-lWM"/>
+                <constraint firstItem="UjB-lO-Eqs" firstAttribute="top" secondItem="Rwt-7k-ZsO" secondAttribute="bottom" constant="15" id="yR8-3t-Wk3"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mine_wallet" width="128" height="128"/>
+    </resources>
+</document>
