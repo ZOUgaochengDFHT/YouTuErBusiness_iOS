@@ -25,7 +25,7 @@
 
 #import "RETableViewItem.h"
 #import "REInlineDatePickerItem.h"
-
+typedef void (^UpdatePickerBlock)();
 @interface REDateTimeItem : RETableViewItem
 
 @property (strong, readwrite, nonatomic) NSDate *value;
@@ -44,6 +44,8 @@
 @property (copy, readwrite, nonatomic) void (^onChange)(REDateTimeItem *item);
 @property (assign, readwrite, nonatomic) BOOL inlineDatePicker;
 @property (strong, readwrite, nonatomic) REInlineDatePickerItem *inlinePickerItem;
+
+@property (nonatomic, copy) UpdatePickerBlock updatePickerBlock;
 
 + (instancetype)itemWithTitle:(NSString *)title value:(NSDate *)value placeholder:(NSString *)placeholder format:(NSString *)format datePickerMode:(UIDatePickerMode)datePickerMode;
 - (id)initWithTitle:(NSString *)title value:(NSDate *)value placeholder:(NSString *)placeholder format:(NSString *)format datePickerMode:(UIDatePickerMode)datePickerMode;

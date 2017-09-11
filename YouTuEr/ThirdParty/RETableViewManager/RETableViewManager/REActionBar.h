@@ -27,11 +27,12 @@
 
 @protocol REActionBarDelegate;
 
+typedef void (^ChangeTitleBlock)(NSString *);
 @interface REActionBar : UIToolbar
 
 @property (strong, readonly, nonatomic) UISegmentedControl *navigationControl;
 @property (weak, readwrite, nonatomic) id<REActionBarDelegate> actionBarDelegate;
-
+@property (nonatomic, copy) ChangeTitleBlock changeTitleBlock;
 - (id)initWithDelegate:(id)delegate;
 
 @end

@@ -632,7 +632,12 @@
         if (actionItem.selectionHandler)
             actionItem.selectionHandler(item);
     }
-    
+    if ([item isKindOfClass:[REDateTimeItem class]]) {
+        REDateTimeItem *dateTimeItem = (REDateTimeItem *)item;
+        if (dateTimeItem.updatePickerBlock) {
+            dateTimeItem.updatePickerBlock();
+        }
+    }
     // Forward to UITableView delegate
     //
     if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)])

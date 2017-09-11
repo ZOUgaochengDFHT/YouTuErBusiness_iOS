@@ -118,6 +118,10 @@
     }
 
     self.enabled = self.item.enabled;
+    self.item.updatePickerBlock = ^ {
+        self.datePicker.minimumDate = self.item.minimumDate;
+        self.datePicker.maximumDate = self.item.maximumDate;
+    };
 }
 
 - (void)layoutSubviews

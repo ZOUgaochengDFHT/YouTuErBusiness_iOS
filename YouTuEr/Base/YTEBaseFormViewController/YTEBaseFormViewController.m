@@ -84,12 +84,11 @@
     section.style = [self.manager.style copy];
     section.style.backgroundImages = nil;
     section.style.selectedBackgroundImages = nil;
-//    buttonItem.textColor = [UIColor whiteColor];
-//    buttonItem.textFont = YTEFont(20.0);
-//    buttonItem.backgroundColor = YTEDominantColor;
+    buttonItem.textColor = [UIColor whiteColor];
+    buttonItem.textFont = YTEFont(20.0);
+    buttonItem.backgroundColor = YTEDominantColor;
     buttonItem.textAlignment = NSTextAlignmentCenter;
     [section addItem:buttonItem];
-    
     self.buttonItem = buttonItem;
     return section;
 }

@@ -42,16 +42,7 @@
     EMOptions *options = [EMOptions optionsWithAppkey:@"1195170904178138#youtuer-business"];
     [options setApnsCertName:@"Athena_development_push"];
     [[EMClient sharedClient] initializeSDKWithOptions:options];
-    BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
-    if (!isAutoLogin) {
-        EMError *error = [[EMClient sharedClient] loginWithUsername:@"15311425918" password:@"qq1111"];
-        if (!error) {
-            NSLog(@"登录成功");
-            [[EMClient sharedClient].options setIsAutoLogin:YES];
-        }
-    } else {
-        NSLog(@"自动登录成功");
-    }
+
     
     // 设置状态栏颜色为白色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];

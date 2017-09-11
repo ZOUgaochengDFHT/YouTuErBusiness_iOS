@@ -70,7 +70,7 @@
     self.valueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.valueLabel.font = [UIFont systemFontOfSize:17];
     self.valueLabel.backgroundColor = [UIColor clearColor];
-    self.valueLabel.textColor = self.detailTextLabel.textColor;
+    self.valueLabel.textColor = [UIColor darkGrayColor];
     self.valueLabel.highlightedTextColor = [UIColor whiteColor];
     self.valueLabel.textAlignment = NSTextAlignmentRight;
     self.valueLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;

@@ -114,6 +114,9 @@
     }
     if (self.textLabel.text.length == 0)
         self.textLabel.text = @" ";
+    
+    self.backgroundColor = self.item.backgroundColor ? self.item.backgroundColor : [UIColor clearColor];
+    self.textLabel.textColor = self.item.textColor;
 }
 
 - (void)cellDidDisappear
@@ -124,7 +127,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    self.tableViewManager.cell = self;
     // Set content frame
     //
     CGRect contentFrame = self.contentView.bounds;
@@ -165,6 +168,7 @@
     backgroundFrame.size.width = self.backgroundView.frame.size.width - self.section.style.backgroundImageMargin * 2;
     self.backgroundImageView.frame = backgroundFrame;
     self.selectedBackgroundImageView.frame = backgroundFrame;
+    self.textLabel.font = self.item.textFont;
 
 }
 
@@ -215,6 +219,8 @@
 {
     [self.actionBar.navigationControl setEnabled:[self indexPathForPreviousResponder] != nil forSegmentAtIndex:0];
     [self.actionBar.navigationControl setEnabled:[self indexPathForNextResponder] != nil forSegmentAtIndex:1];
+    
+    self.actionBar.changeTitleBlock(self.item.title);
 }
 
 - (UIResponder *)responder
@@ -281,11 +287,14 @@
     NSIndexPath *indexPath = navigationControl.selectedSegmentIndex == 0 ? [self indexPathForPreviousResponder] : [self indexPathForNextResponder];
     if (indexPath) {
         RETableViewCell *cell = (RETableViewCell *)[self.parentTableView cellForRowAtIndexPath:indexPath];
-        if (!cell)
+        if (!cell){
             [self.parentTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [self.parentTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+        }
         cell = (RETableViewCell *)[self.parentTableView cellForRowAtIndexPath:indexPath];
         [cell.responder becomeFirstResponder];
     }
+    self.selected = NO;
     if (self.item.actionBarNavButtonTapHandler)
         self.item.actionBarNavButtonTapHandler(self.item);
 }

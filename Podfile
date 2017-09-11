@@ -7,12 +7,10 @@ target 'YouTuEr' do
   # Pods for YouTuEr
     pod 'MJRefresh'
     pod 'MJExtension'
-    pod 'RETableViewManager', '1.7'
     pod 'YYWebImage'
     pod 'AFNetworking'
     # 主模块(必须)
     pod 'ShareSDK3', '4.0.0.1'
-#    pod 'MOBFoundation', '3.0.0'
     # UI模块(非必须，需要用到ShareSDK提供的分享菜单栏和分享编辑页面需要以下1行)
     pod 'ShareSDK3/ShareSDKUI'
     # 平台SDK模块(对照一下平台，需要的加上，如果只需要QQ、微信、新浪微博，只需要以下3行)

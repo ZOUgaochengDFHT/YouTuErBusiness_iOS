@@ -44,7 +44,8 @@
     [self sizeToFit];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(handleActionBarDone:)];
-    
+
+    UIBarButtonItem *hideButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
     self.navigationControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Previous", @""), NSLocalizedString(@"Next", @""), nil]];
     self.navigationControl.momentary = YES;
     [self.navigationControl addTarget:self action:@selector(handleActionBarPreviousNext:) forControlEvents:UIControlEventValueChanged];
@@ -63,10 +64,19 @@
     [self.navigationControl setContentOffset:CGSizeMake(-4, 0) forSegmentAtIndex:0];
     
     UIBarButtonItem *prevNextWrapper = [[UIBarButtonItem alloc] initWithCustomView:self.navigationControl];
+    UILabel *textLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 44)];
+    textLable.text = @" ";
+    textLable.textAlignment = NSTextAlignmentCenter;
+    textLable.center = self.center;
+    [self addSubview:textLable];
+    self.changeTitleBlock = ^(NSString *text){
+        textLable.text = text;
+        [self layoutSubviews];
+    };
+    
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setItems:[NSArray arrayWithObjects:prevNextWrapper, flexible, doneButton, nil]];
     self.actionBarDelegate = delegate;
-    
     return self;
 }
 

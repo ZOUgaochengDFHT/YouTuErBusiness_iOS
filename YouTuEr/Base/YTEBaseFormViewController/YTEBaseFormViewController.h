@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RETableViewManager/RETableViewManager.h>
+#import "RETableViewManager.h"
 #import "YTENetworkTool.h"
 @interface YTEBaseFormViewController : UITableViewController<RETableViewManagerDelegate>
 

@@ -64,7 +64,7 @@
                                 <constraint firstAttribute="width" constant="1" id="oC8-cZ-3KB"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="980785066@qq.com" placeholder="请输入用户账号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Yl-tq-0eE">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户账号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Yl-tq-0eE">
                             <rect key="frame" x="59" y="18" width="226" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="WQm-Ld-1hg"/>
@@ -73,7 +73,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qq1111" placeholder="请输入用户密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TDs-qE-0GL">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TDs-qE-0GL">
                             <rect key="frame" x="59" y="87.5" width="226" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="8a0-LF-YmI"/>

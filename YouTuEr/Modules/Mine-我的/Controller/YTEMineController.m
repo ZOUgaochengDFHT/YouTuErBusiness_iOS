@@ -218,6 +218,7 @@
             if (index == 0) {
                 self.view.window.rootViewController = [[YTENavigationController alloc] initWithRootViewController:[[YTELoginController alloc] init]];
                 [[SRUserDefaultManager sharedManager] removeObjectForKey:SR_CLINETID];
+                [[EMClient sharedClient] logout:YES];
             }
         };
         

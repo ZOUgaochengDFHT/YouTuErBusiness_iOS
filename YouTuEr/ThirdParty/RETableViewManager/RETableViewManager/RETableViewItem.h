@@ -24,13 +24,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <REValidation/REValidation.h>
+#import "REValidation.h"
 #import "RETableViewCellStyle.h"
 
 @class RETableViewSection;
 
 @interface RETableViewItem : NSObject
 
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, copy) UIFont *textFont;
+@property (nonatomic, strong) UIColor *backgroundColor;
 @property (copy, readwrite, nonatomic) NSString *title;
 @property (strong, readwrite, nonatomic) UIImage *image;
 @property (strong, readwrite, nonatomic) UIImage *highlightedImage;

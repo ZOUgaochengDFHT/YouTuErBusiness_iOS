@@ -40,11 +40,6 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - REFormattedNumberField (1.1.6)
-  - RETableViewManager (1.7):
-    - REFormattedNumberField (~> 1.1.5)
-    - REValidation (~> 0.1.4)
-  - REValidation (0.1.4)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -89,7 +84,6 @@ DEPENDENCIES:
   - MMPopupView (~> 1.7.2)
   - MWPhotoBrowser (~> 2.1.2)
   - ReactiveCocoa (~> 2.5)
-  - RETableViewManager (= 1.7)
   - ShareSDK3 (= 4.0.0.1)
   - ShareSDK3/ShareSDKConfigurationFile
   - ShareSDK3/ShareSDKExtension
@@ -134,9 +128,6 @@ SPEC CHECKSUMS:
   MOBFoundation: e6572a62983a44fa048c4038842ade1494c10059
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
-  RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
-  REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   ShareSDK3: e0465c9ffdf806ab97c27f4397fd7deca600ede9
   SMSSDK: e4706231a3e6aa5620ec8a2d3fdc4d16870f746e
@@ -148,6 +139,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 9d3f60743b4999992a796b5efaf76b511dbaff7c
+PODFILE CHECKSUM: 0fbb73df5ca4111a41580b5294b7ec581e73c383
 
 COCOAPODS: 1.1.1

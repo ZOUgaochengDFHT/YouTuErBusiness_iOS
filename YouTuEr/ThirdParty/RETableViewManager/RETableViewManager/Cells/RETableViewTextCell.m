@@ -1,5 +1,5 @@
 //
-// RETableViewNumberCell.m
+// RETableViewTextCell.m
 // RETableViewManager
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
@@ -23,18 +23,16 @@
 // THE SOFTWARE.
 //
 
-#import "RETableViewNumberCell.h"
+#import "RETableViewTextCell.h"
 #import "RETableViewManager.h"
 
-@interface RETableViewNumberCell ()
-
-@property (strong, readwrite, nonatomic) REFormattedNumberField *textField;
+@interface RETableViewTextCell ()
 
 @property (assign, readwrite, nonatomic) BOOL enabled;
 
 @end
 
-@implementation RETableViewNumberCell
+@implementation RETableViewTextCell
 
 @synthesize item = _item;
 
@@ -55,11 +53,11 @@
 - (void)cellDidLoad
 {
     [super cellDidLoad];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.textLabel.backgroundColor = [UIColor clearColor];
     
-    self.textField = [[REFormattedNumberField alloc] initWithFrame:CGRectZero];
+    self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
     self.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.textField.textAlignment = NSTextAlignmentRight;
     self.textField.inputAccessoryView = self.actionBar;
     self.textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.textField.delegate = self;
@@ -67,24 +65,50 @@
     [self.contentView addSubview:self.textField];
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    if (selected) {
+        [self.textField becomeFirstResponder];
+    }
+}
+
 - (void)cellWillAppear
 {
     [super cellWillAppear];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.textLabel.text = self.item.title.length == 0 ? @" " : self.item.title;
-    self.textField.text = [self.item.value re_stringWithNumberFormat:self.item.format];
+    self.textField.text = self.item.value;
     self.textField.placeholder = self.item.placeholder;
-    self.textField.format = self.item.format;
     self.textField.font = [UIFont systemFontOfSize:17];
+    self.textField.autocapitalizationType = self.item.autocapitalizationType;
+    self.textField.autocorrectionType = self.item.autocorrectionType;
+    self.textField.spellCheckingType = self.item.spellCheckingType;
+    self.textField.keyboardType = self.item.keyboardType;
     self.textField.keyboardAppearance = self.item.keyboardAppearance;
-    self.textField.keyboardType = UIKeyboardTypeNumberPad;
+    self.textField.returnKeyType = self.item.returnKeyType;
+    self.textField.enablesReturnKeyAutomatically = self.item.enablesReturnKeyAutomatically;
+    self.textField.secureTextEntry = self.item.secureTextEntry;
+    self.textField.clearButtonMode = self.item.clearButtonMode;
+    self.textField.clearsOnBeginEditing = self.item.clearsOnBeginEditing;
+    
+    self.actionBar.barStyle = self.item.keyboardAppearance == UIKeyboardAppearanceAlert ? UIBarStyleBlack : UIBarStyleDefault;
     
     self.enabled = self.item.enabled;
+}
+
+- (UIResponder *)responder
+{
+    return self.textField;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    [self layoutDetailView:self.textField minimumWidth:0];
+    
     if ([self.tableViewManager.delegate respondsToSelector:@selector(tableView:willLayoutCellSubviews:forRowAtIndexPath:)])
         [self.tableViewManager.delegate tableView:self.tableViewManager.tableView willLayoutCellSubviews:self forRowAtIndexPath:[self.tableViewManager.tableView indexPathForCell:self]];
 }
@@ -92,7 +116,7 @@
 #pragma mark -
 #pragma mark Handle state
 
-- (void)setItem:(RENumberItem *)item
+- (void)setItem:(RETextItem *)item
 {
     if (_item != nil) {
         [_item removeObserver:self forKeyPath:@"enabled"];
@@ -114,7 +138,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([object isKindOfClass:[RENumberItem class]] && [keyPath isEqualToString:@"enabled"]) {
+    if ([object isKindOfClass:[RETextItem class]] && [keyPath isEqualToString:@"enabled"]) {
         BOOL newValue = [[change objectForKey: NSKeyValueChangeNewKey] boolValue];
         
         self.enabled = newValue;
@@ -122,17 +146,67 @@
 }
 
 #pragma mark -
-#pragma mark Handle events
+#pragma mark Text field events
 
-- (void)textFieldDidChange:(REFormattedNumberField *)textField
+- (void)textFieldDidChange:(UITextField *)textField
 {
-    self.item.value = textField.unformattedText;
+    self.item.value = textField.text;
     if (self.item.onChange)
         self.item.onChange(self.item);
 }
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    NSIndexPath *indexPath = [self indexPathForNextResponder];
+    if (indexPath) {
+        textField.returnKeyType = UIReturnKeyNext;
+    } else {
+        textField.returnKeyType = self.item.returnKeyType;
+    }
+    [self updateActionBarNavigationControl];
+    [self.parentTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowIndex inSection:self.sectionIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if (self.item.onBeginEditing)
+        self.item.onBeginEditing(self.item);
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
     if (self.item.onEndEditing)
         self.item.onEndEditing(self.item);
+    return YES;
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (self.item.onReturn)
+        self.item.onReturn(self.item);
+    if (self.item.onEndEditing)
+        self.item.onEndEditing(self.item);
+    NSIndexPath *indexPath = [self indexPathForNextResponder];
+    if (!indexPath) {
+        [self endEditing:YES];
+        return YES;
+    }
+    RETableViewCell *cell = (RETableViewCell *)[self.parentTableView cellForRowAtIndexPath:indexPath];
+    [cell.responder becomeFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    BOOL shouldChange = YES;
+    
+    if (self.item.charactersLimit) {
+        NSUInteger newLength = textField.text.length + string.length - range.length;
+        shouldChange = newLength <= self.item.charactersLimit;
+    }
+    
+    if (self.item.onChangeCharacterInRange && shouldChange)
+        shouldChange = self.item.onChangeCharacterInRange(self.item, range, string);
+    
+    return shouldChange;
+}
+
 
 @end

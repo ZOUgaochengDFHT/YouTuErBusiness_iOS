@@ -24,7 +24,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <REValidation/REValidation.h>
+#import "REValidation.h"
 #import "RETableViewSection.h"
 #import "RETableViewCellStyle.h"
 #import "RETableViewCell.h"
@@ -62,6 +62,9 @@
  It fully implements `UITableViewDelegate` and `UITableViewDataSource` protocols so you don't have to.
  */
 @interface RETableViewManager : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+
+@property (nonatomic, strong) RETableViewCell *cell;
 
 ///-----------------------------
 /// @name Managing Table View and Sections

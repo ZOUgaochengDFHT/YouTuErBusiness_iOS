@@ -20,6 +20,8 @@
 #import "YTELoginView.h"
 #import "YTEUser.h"
 
+static NSString *const emPassword = @"qq1111";
+
 @interface YTELoginController ()
 @property(nonatomic,strong)UIAlertController *alertC;//提示框
 
@@ -90,6 +92,8 @@
     @weakify(self);
     [[SRUserService sharedService] memberLoginRequestWithModel:serviceModel successBlock:^(NSDictionary* returnData, NSURLSessionTask *task) {
         @strongify(self);
+        
+        [self emregisterWithUsername:phoneNum];
         [self hideProgressView];
         [self performBlock:^{
             [[SRMessage sharedMessage] showMessage:returnData[kDataJSONKey_Msg] withType:MessageTypeNotice];
@@ -102,7 +106,51 @@
         @strongify(self);
         [self hideProgressView];
     }];
-    
 }
+
+- (void)emregisterWithUsername:(NSString *)username {
+    username = [username componentsSeparatedByString:@"@"].firstObject;
+    void (^emloginBlock)() = ^{
+        EMError* (^loginActionBlock)() = ^{
+            return [[EMClient sharedClient] loginWithUsername:username password:emPassword];
+        };
+        EMError *error = loginActionBlock();
+        if (error) {
+            loginActionBlock();
+        } else {
+            NSLog(@"登录成功");
+        }
+        [[EMClient sharedClient].options setIsAutoLogin:YES];
+    };
+    
+    EMError *error = [[EMClient sharedClient] registerWithUsername:username password:emPassword];
+    if (!error) {
+        emloginBlock();
+    } else {
+        switch (error.code) {
+            case EMErrorServerNotReachable:
+                [[SRMessage sharedMessage] showMessage:NSLocalizedString(@"error.connectServerFail", @"Connect to the server failed!") withType:MessageTypeNotice];
+                break;
+            case EMErrorUserAlreadyExist:
+                emloginBlock();
+                break;
+            case EMErrorNetworkUnavailable:
+                [[SRMessage sharedMessage] showMessage:NSLocalizedString(@"error.connectNetworkFail", @"No network connection!") withType:MessageTypeNotice];
+                break;
+            case EMErrorServerTimeout:
+                [[SRMessage sharedMessage] showMessage:NSLocalizedString(@"error.connectServerTimeout", @"Connect to the server timed out!") withType:MessageTypeNotice];
+                break;
+            case EMErrorServerServingForbidden:
+                [[SRMessage sharedMessage] showMessage:NSLocalizedString(@"servingIsBanned", @"Serving is banned") withType:MessageTypeNotice];
+                break;
+            default:
+                [[SRMessage sharedMessage] showMessage:NSLocalizedString(@"register.fail", @"Registration failed") withType:MessageTypeNotice];
+                break;
+               
+        }
+    }
+}
+
+
 
 @end
