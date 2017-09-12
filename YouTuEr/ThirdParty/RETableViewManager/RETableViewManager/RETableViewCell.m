@@ -114,7 +114,6 @@
     }
     if (self.textLabel.text.length == 0)
         self.textLabel.text = @" ";
-    
     self.backgroundColor = self.item.backgroundColor ? self.item.backgroundColor : [UIColor clearColor];
     self.textLabel.textColor = self.item.textColor;
 }

@@ -29,7 +29,7 @@
 #import "TTTAttributedLabel.h"
 #import <MJRefresh/MJRefresh.h>
 #import <Hyphenate/Hyphenate.h>
-#import <EaseUI/EaseUI.h>
+#import "EaseUI.h"
 #import "UIViewController+HUD.h"
 //#import "EMAlertView.h"
 #import "UIImageView+WebCache.h"

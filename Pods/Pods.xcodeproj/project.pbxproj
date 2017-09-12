@@ -1315,6 +1315,7 @@
 		594D11F53E64CE4217512EBD2EA53133 /* YYImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYImage.xcconfig; sourceTree = "<group>"; };
 		595CE068402279EA32684ED61DFDF60C /* ImageSelectedSmallOff@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "ImageSelectedSmallOff@2x.png"; path = "Pod/Assets/ImageSelectedSmallOff@2x.png"; sourceTree = "<group>"; };
 		59E0FCD1E15C49529318934F93F0AB56 /* EMVideoMessageBody.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMVideoMessageBody.h; path = EaseMobSDK/include/ChatService/EMChatManager/types/EMVideoMessageBody.h; sourceTree = "<group>"; };
+		59FEE32D85670F8E09A0A72456693C05 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hyphenate.framework; path = ios_IM_Hyphenate_sdk_3.3.4r1/HyphenateFullSDK/Hyphenate.framework; sourceTree = "<group>"; };
 		5A2C85B9563CC803F294A14AF4F5B079 /* IQKeyboardManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IQKeyboardManager.modulemap; sourceTree = "<group>"; };
 		5A98863DB7D7617B11DE87A31A5A757B /* UIButton+YYWebImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+YYWebImage.m"; path = "YYWebImage/Categories/UIButton+YYWebImage.m"; sourceTree = "<group>"; };
 		5AC7721E65675C5892BB94F9D317E9F6 /* EMReceiptBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMReceiptBase.h; path = EaseMobSDK/include/ChatService/EMChatManager/types/EMReceiptBase.h; sourceTree = "<group>"; };
@@ -1822,7 +1823,6 @@
 		F3B818E4AC70C039A5BF03121FDA8D87 /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
 		F4312CC287E498A44ECF4F385BEAC36F /* EaseBubbleView+File.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EaseBubbleView+File.m"; path = "EaseUI/EMUIKit/Views/conversation/MessageCellBubbleView/EaseBubbleView+File.m"; sourceTree = "<group>"; };
 		F49D6F818EC9EE9583215513E38804D0 /* MWCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MWCommon.h; path = Pod/Classes/MWCommon.h; sourceTree = "<group>"; };
-		F4E3C3FD4C1F10CAE9B18F58C19BEF69 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hyphenate.framework; path = ios_IM_Hyphenate_sdk_3.3.2/HyphenateFullSDK/Hyphenate.framework; sourceTree = "<group>"; };
 		F511EF8A2BD8F0CA2E0D0A6282295DE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59E92AB1AB543A8B88E82DBB377E6AC /* EaseConversationModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EaseConversationModel.h; path = EaseUI/EMUIKit/Model/EaseConversationModel.h; sourceTree = "<group>"; };
 		F5A44B7FCAA1C219D96232E2E7AEC09D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2388,14 +2388,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		304F707EDEB15B099845D74F3A7B0A87 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F4E3C3FD4C1F10CAE9B18F58C19BEF69 /* Hyphenate.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		30B7DCF0689B3C2B7C99B5FE4E68C211 /* ShareSDK3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2594,6 +2586,14 @@
 			isa = PBXGroup;
 			children = (
 				3F121855B774A127B077822AA2E9B94F /* SMS_SDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45DE9246F134DD7DD57C3A80B6BE22A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59FEE32D85670F8E09A0A72456693C05 /* Hyphenate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2989,7 +2989,7 @@
 		9218FDB6513EE8B2116ADCABEE5E3BB9 /* Hyphenate */ = {
 			isa = PBXGroup;
 			children = (
-				304F707EDEB15B099845D74F3A7B0A87 /* Frameworks */,
+				45DE9246F134DD7DD57C3A80B6BE22A6 /* Frameworks */,
 			);
 			name = Hyphenate;
 			path = Hyphenate;

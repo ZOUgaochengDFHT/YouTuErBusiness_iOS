@@ -22,8 +22,13 @@
 #import "WXApi.h"
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
+
+#import "YTEChatHelper.h"
+
 //新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
 
+static NSString *const EMAppKey       = @"1195170904178138#youtuer-business";
+static NSString *const EMApnsCertName = @"YouTuEr_develop_push";
 
 @interface AppDelegate ()
 
@@ -39,11 +44,34 @@
     [[SRReachabilityManager sharedManager] startMonitor];
     
     // 集成环信SDK
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1195170904178138#youtuer-business"];
-    [options setApnsCertName:@"Athena_development_push"];
+    EMOptions *options = [EMOptions optionsWithAppkey:EMAppKey];
+    [options setApnsCertName:EMApnsCertName];
     [[EMClient sharedClient] initializeSDKWithOptions:options];
-
     
+    [[EaseSDKHelper shareHelper] hyphenateApplication:application
+                        didFinishLaunchingWithOptions:launchOptions
+                                               appkey:EMAppKey
+                                         apnsCertName:EMApnsCertName
+                                          otherConfig:@{@"httpsOnly":[NSNumber numberWithBool:YES], kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES],@"easeSandBox":[NSNumber numberWithBool:YES]}];
+
+    /**
+     *  iOS8以上 注册APNs
+     */
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound |
+        UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeSound |
+        UIRemoteNotificationTypeAlert;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    }
+
+    [YTEChatHelper shareHelper];
     // 设置状态栏颜色为白色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     // Override point for customization after application launch.
@@ -61,27 +89,6 @@
     return YES;
 }
 
-//#pragma  mark - private
-//
-//- (void)saveLastLoginUsername
-//{
-//    NSString *username = [[EMClient sharedClient] currentUsername];
-//    if (username && username.length > 0) {
-//        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//        [ud setObject:username forKey:[NSString stringWithFormat:@"em_lastLogin_username"]];
-//        [ud synchronize];
-//    }
-//}
-//
-//- (NSString*)lastLoginUsername
-//{
-//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//    NSString *username = [ud objectForKey:[NSString stringWithFormat:@"em_lastLogin_username"]];
-//    if (username && username.length > 0) {
-//        return username;
-//    }
-//    return nil;
-//}
 
 - (void)configureShareSDK {
     [SMSSDK enableAppContactFriends:NO];
@@ -137,6 +144,28 @@
 }
 
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[EaseSDKHelper shareHelper] hyphenateApplication:application didReceiveRemoteNotification:userInfo];
+}
+
+// 将得到的deviceToken传给SDK
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[EMClient sharedClient] bindDeviceToken:deviceToken];
+    });
+}
+
+// 注册deviceToken失败
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"apns.failToRegisterApns", Fail to register apns)
+                                                    message:error.description
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -146,13 +175,11 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [[EMClient sharedClient] applicationDidEnterBackground:application];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    [[EMClient sharedClient] applicationWillEnterForeground:application];
 }
 
 

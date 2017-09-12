@@ -38,9 +38,19 @@
 	<key>NSContactsUsageDescription</key>
 	<string>允许访问通讯录</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>环信Demo需要访问您的相册</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>允许此权限才能访问：提醒事项</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>remote-notification</string>
+		<string>voip</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

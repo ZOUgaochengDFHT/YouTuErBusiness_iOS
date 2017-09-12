@@ -282,6 +282,7 @@
 		2579E2C1DC0E1C651CC1F159 /* Pods_YouTuEr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouTuEr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F797041E5822F0008FEB56 /* YouTuEr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTuEr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F31D032899061029C7B60A7 /* Pods-YouTuEr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouTuEr.release.xcconfig"; path = "Pods/Target Support Files/Pods-YouTuEr/Pods-YouTuEr.release.xcconfig"; sourceTree = "<group>"; };
+		BC035DEB1F679336000CD780 /* YouTuEr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouTuEr.entitlements; sourceTree = "<group>"; };
 		BC0867C01F37F502000084B9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC0867C11F37F502000084B9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC0867C21F37F502000084B9 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -840,6 +841,7 @@
 		50F797071E5822F0008FEB56 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC035DEB1F679336000CD780 /* YouTuEr.entitlements */,
 				BC0867C01F37F502000084B9 /* Info.plist */,
 				BC5B05771F60558300794643 /* Localizable.strings */,
 				BC0867C11F37F502000084B9 /* main.m */,
@@ -1984,6 +1986,14 @@
 						DevelopmentTeam = X36D3JH723;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2457,7 +2467,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YouTuEr/YouTuEr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = X36D3JH723;
@@ -2525,8 +2537,6 @@
 					"\"MOBFoundation\"",
 					"-framework",
 					"\"MOBFoundationEx\"",
-					"-framework",
-					"\"MWPhotoBrowser\"",
 					"-framework",
 					"\"MapKit\"",
 					"-framework",
@@ -2595,7 +2605,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = YouTuEr/YouTuEr.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = X36D3JH723;
@@ -2663,8 +2675,6 @@
 					"\"MOBFoundation\"",
 					"-framework",
 					"\"MOBFoundationEx\"",
-					"-framework",
-					"\"MWPhotoBrowser\"",
 					"-framework",
 					"\"MapKit\"",
 					"-framework",

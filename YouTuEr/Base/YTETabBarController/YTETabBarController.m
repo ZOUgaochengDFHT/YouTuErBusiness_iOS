@@ -17,6 +17,7 @@
 #import "UserProfileManager.h"
 #import <UserNotifications/UserNotifications.h>
 #import "YTEApplyViewController.h"
+#import "YTEChatHelper.h"
 
 #define ATETabBarTitleNormalColor    SR_RGBCOLOR(16, 16, 16)
 //两次提示的默认间隔
@@ -52,6 +53,8 @@ static NSString *kGroupName = @"GroupName";
                             name:YTESETUPUNREADMESSAGECOUNTNOTIFICATION
                           object:nil];
     [self setupUnreadMessageCount];
+    [YTEChatHelper shareHelper].mainVC = self;
+    [YTEChatHelper shareHelper].conversationListVC = self.chatListVC;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,10 +140,10 @@ static NSString *kGroupName = @"GroupName";
     //保存最后一次响铃时间
     self.lastPlaySoundDate = [NSDate date];
     
-    // 收到消息时，播放音频
-    [[EMCDDeviceManager sharedInstance] playNewMessageSound];
-    // 收到消息时，震动
-    [[EMCDDeviceManager sharedInstance] playVibration];
+//    // 收到消息时，播放音频
+//    [[EMCDDeviceManager sharedInstance] playNewMessageSound];
+//    // 收到消息时，震动
+//    [[EMCDDeviceManager sharedInstance] playVibration];
 }
 
 

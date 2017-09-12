@@ -186,6 +186,9 @@
     }
 }
 
+- (void)messageViewController:(EaseMessageViewController *)viewController didSelectMoreView:(EaseChatBarMoreView *)moreView AtIndex:(NSInteger)index {
+    
+}
 
 #pragma mark - EaseMessageViewControllerDataSource
 

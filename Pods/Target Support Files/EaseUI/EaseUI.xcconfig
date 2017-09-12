@@ -1,5 +1,5 @@
 CONFIGURATION_BUILD_DIR = $PODS_CONFIGURATION_BUILD_DIR/EaseUI
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.2/HyphenateFullSDK" "$PODS_CONFIGURATION_BUILD_DIR/DACircularProgress" "$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD" "$PODS_CONFIGURATION_BUILD_DIR/MJRefresh" "$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Hyphenate/ios_IM_Hyphenate_sdk_3.3.4r1/HyphenateFullSDK" "$PODS_CONFIGURATION_BUILD_DIR/DACircularProgress" "$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD" "$PODS_CONFIGURATION_BUILD_DIR/MJRefresh" "$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/EaseMobSDK" "${PODS_ROOT}/Headers/Public/Hyphenate" "${PODS_ROOT}/Headers/Public/MOBFoundation" "${PODS_ROOT}/Headers/Public/SMSSDK" "${PODS_ROOT}/Headers/Public/ShareSDK3"
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/EaseUI/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb" $(inherited) "${PODS_ROOT}/EaseUI/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb"
