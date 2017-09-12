@@ -46,9 +46,8 @@
     [self.navigationItem setTitle:NSLocalizedString(@"title.conversation", @"Conversations")];
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.tabBarController.tabBar setTranslucent:NO];
-    
     self.showRefreshHeader = YES;
-//    self.dataSource = self;
+    self.dataSource = self;
     self.delegate = self;
 }
 

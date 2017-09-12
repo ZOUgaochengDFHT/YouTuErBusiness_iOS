@@ -11,7 +11,7 @@
 #import "YTEApplyViewController.h"
 #import "MBProgressHUD.h"
 #import <UserNotifications/UserNotifications.h>
-
+#import "DemoCallManager.h"
 
 static YTEChatHelper *helper = nil;
 
@@ -83,8 +83,6 @@ static YTEChatHelper *helper = nil;
     [self _clearHelper];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"loginAtOtherDevice", @"your login account has been in other places") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
     [alertView show];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
 }
 
 - (void)userAccountDidRemoveFromServer {
@@ -435,5 +433,8 @@ static YTEChatHelper *helper = nil;
 
 #pragma mark - Setter & Getter
 
-
+- (void)setMainVC:(YTETabBarController *)mainVC {
+    _mainVC = mainVC;
+    [[DemoCallManager sharedManager] setMainController:mainVC];
+}
 @end
