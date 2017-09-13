@@ -35,8 +35,6 @@
 
 - (NSString *)member_id;
 
-- (void)changeDoneBarButtonItemText;
-
 - (BOOL)isLogin;
 
 - (YTEAuthenModel *)authenModel;

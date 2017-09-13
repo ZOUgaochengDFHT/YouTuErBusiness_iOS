@@ -5,27 +5,15 @@
 //  Created by ss on 17/2/18.
 //  Copyright © 2017年 ss. All rights reserved.
 //
+
+#import "AppDelegate.h"
 #import "YTEFillInDataViewController.h"
 #import "YTENavigationController.h"
 #import "YTETabBarController.h"
 #import "YTELoginController.h"
-#import "AppDelegate.h"
-
-
-#import <ShareSDK/ShareSDK.h>
-#import <SMS_SDK/SMSSDK+ContactFriends.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-//腾讯开放平台（对应QQ和QQ空间）SDK头文件
-#import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-//微信SDK头文件
-#import "WXApi.h"
-//新浪微博SDK头文件
-#import "WeiboSDK.h"
-
-#import "YTEChatHelper.h"
-
-//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
+#import "AppDelegate+EaseMob.h"
+#import "AppDelegate+ShareSDK.h"
+#import "AppDelegate+Config.h"
 
 static NSString *const EMAppKey       = @"1195170904178138#youtuer-business";
 static NSString *const EMApnsCertName = @"YouTuEr_develop_push";
@@ -39,132 +27,37 @@ static NSString *const EMApnsCertName = @"YouTuEr_develop_push";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    [NSThread sleepForTimeInterval:2.0];
-    // 不允许SMSSDK访问通讯录好友
-    [[SRAppManager sharedManager] changeDoneBarButtonItemText];
-    [[SRReachabilityManager sharedManager] startMonitor];
-    
-    // 集成环信SDK
-    EMOptions *options = [EMOptions optionsWithAppkey:EMAppKey];
-    [options setApnsCertName:EMApnsCertName];
-    [[EMClient sharedClient] initializeSDKWithOptions:options];
-    
-    [[EaseSDKHelper shareHelper] hyphenateApplication:application
-                        didFinishLaunchingWithOptions:launchOptions
-                                               appkey:EMAppKey
-                                         apnsCertName:EMApnsCertName
-                                          otherConfig:@{@"httpsOnly":[NSNumber numberWithBool:YES], kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES],@"easeSandBox":[NSNumber numberWithBool:YES]}];
-
-    /**
-     *  iOS8以上 注册APNs
-     */
-    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
-        [application registerForRemoteNotifications];
-        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
-        UIUserNotificationTypeSound |
-        UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
-        [application registerUserNotificationSettings:settings];
-    } else {
-        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
-        UIRemoteNotificationTypeSound |
-        UIRemoteNotificationTypeAlert;
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
-    }
-
-    [YTEChatHelper shareHelper];
-    // 设置状态栏颜色为白色
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     // Override point for customization after application launch.
-    // 1.创建主窗口
-    self.window = [[UIWindow alloc] init];
-    self.window.bounds = [UIScreen mainScreen].bounds;
-    // 2.设置主窗口的根控制器
-    self.window.rootViewController = [SRAppManager sharedManager].isLogin ? ([SRAppManager sharedManager].hasProfile ? [[YTETabBarController alloc] init] : [[YTENavigationController alloc] initWithRootViewController:[[YTEFillInDataViewController alloc] init]]) : [[YTENavigationController alloc] initWithRootViewController:[[YTELoginController alloc] init]];
-    // 3.显示主窗口
-    [self.window makeKeyAndVisible];
     
+    [self configStatusBarStyle];
+    [self configDoneBarButtonItemText];
+    [self startNetworkStatusMonitor];
+    [self configWindowRootVC];
     // 集成ShareSDK
     [self configureShareSDK];
+    
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *appkey = [ud stringForKey:@"identifier_appkey"];
+    if (!appkey) {
+        appkey = EMAppKey;
+        [ud setObject:appkey forKey:@"identifier_appkey"];
+        [ud synchronize];
+    }
+    // 集成环信SDK
+    [self easemobApplication:application
+didFinishLaunchingWithOptions:launchOptions
+                      appkey:appkey
+                apnsCertName:EMApnsCertName
+                 otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
     
     return YES;
 }
 
 
-- (void)configureShareSDK {
-    [SMSSDK enableAppContactFriends:NO];
-    [ShareSDK registerActivePlatforms:@[
-                                        @(SSDKPlatformTypeSinaWeibo),
-                                        @(SSDKPlatformTypeWechat),
-                                        @(SSDKPlatformTypeQQ),
-                                        ]
-                             onImport:^(SSDKPlatformType platformType)
-     {
-         switch (platformType)
-         {
-             case SSDKPlatformTypeWechat:
-                 [ShareSDKConnector connectWeChat:[WXApi class]];
-                 break;
-             case SSDKPlatformTypeQQ:
-                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
-                 break;
-             case SSDKPlatformTypeSinaWeibo:
-                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-                 break;
-             default:
-                 break;
-         }
-     }
-                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
-     {
-         
-         switch (platformType)
-         {
-             case SSDKPlatformTypeSinaWeibo:
-                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                 [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
-                                           appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                                         redirectUri:@"http://www.sharesdk.cn"
-                                            authType:SSDKAuthTypeBoth];
-                 
-                 break;
-             case SSDKPlatformTypeWechat:
-                 [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
-                                       appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
-                 break;
-             case SSDKPlatformTypeQQ:
-                 [appInfo SSDKSetupQQByAppId:@"100371282"
-                                      appKey:@"aed9b0303e3ed1e27bae87c33761161d"
-                                    authType:SSDKAuthTypeBoth];
-                 break;
-             default:
-                 break;
-         }
-         
-     }];
-}
-
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [[EaseSDKHelper shareHelper] hyphenateApplication:application didReceiveRemoteNotification:userInfo];
+    [self easemobApplication:application didReceiveRemoteNotification:userInfo];
 }
-
-// 将得到的deviceToken传给SDK
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[EMClient sharedClient] bindDeviceToken:deviceToken];
-    });
-}
-
-// 注册deviceToken失败
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"apns.failToRegisterApns", Fail to register apns)
-                                                    message:error.description
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

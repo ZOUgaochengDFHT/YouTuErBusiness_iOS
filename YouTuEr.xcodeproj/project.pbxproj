@@ -251,6 +251,16 @@
 		BC5DB0811F3D7061006CB283 /* YTEQuotedPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5DB07F1F3D7061006CB283 /* YTEQuotedPriceTableViewCell.xib */; };
 		BC6218001F3A0C64006EFE37 /* NSObject+ATExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6217FF1F3A0C64006EFE37 /* NSObject+ATExtension.m */; };
 		BC8DC4731F46E61F003DAE37 /* YTEMerchantAuthenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC4721F46E61F003DAE37 /* YTEMerchantAuthenViewController.m */; };
+		BC99B9E91F68C02300AF6ECD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9E81F68C02300AF6ECD /* SystemConfiguration.framework */; };
+		BC99B9EB1F68C03700AF6ECD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9EA1F68C03700AF6ECD /* QuartzCore.framework */; };
+		BC99B9ED1F68C04300AF6ECD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9EC1F68C04300AF6ECD /* CoreTelephony.framework */; };
+		BC99B9EF1F68C05900AF6ECD /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9EE1F68C05900AF6ECD /* libicucore.tbd */; };
+		BC99B9F11F68C06500AF6ECD /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9F01F68C06500AF6ECD /* libz.1.2.5.tbd */; };
+		BC99B9F31F68C06F00AF6ECD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9F21F68C06F00AF6ECD /* Security.framework */; };
+		BC99B9F51F68C09500AF6ECD /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC99B9F41F68C09500AF6ECD /* libstdc++.tbd */; };
+		BC99B9F81F68CA5D00AF6ECD /* AppDelegate+EaseMob.m in Sources */ = {isa = PBXBuildFile; fileRef = BC99B9F71F68CA5D00AF6ECD /* AppDelegate+EaseMob.m */; };
+		BC99B9FB1F68CC6900AF6ECD /* AppDelegate+ShareSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = BC99B9FA1F68CC6900AF6ECD /* AppDelegate+ShareSDK.m */; };
+		BC99B9FE1F68CD0400AF6ECD /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = BC99B9FD1F68CD0400AF6ECD /* AppDelegate+Config.m */; };
 		BCA4FEBE1F66741B00C4BE80 /* NSString+RENumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FE4E1F66741B00C4BE80 /* NSString+RENumberFormat.m */; };
 		BCA4FEBF1F66741B00C4BE80 /* REFormattedNumberField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FE501F66741B00C4BE80 /* REFormattedNumberField.m */; };
 		BCA4FEC01F66741B00C4BE80 /* RETableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA4FE541F66741B00C4BE80 /* RETableViewBoolCell.m */; };
@@ -758,6 +768,19 @@
 		BC6217FF1F3A0C64006EFE37 /* NSObject+ATExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ATExtension.m"; sourceTree = "<group>"; };
 		BC8DC4711F46E61F003DAE37 /* YTEMerchantAuthenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTEMerchantAuthenViewController.h; sourceTree = "<group>"; };
 		BC8DC4721F46E61F003DAE37 /* YTEMerchantAuthenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTEMerchantAuthenViewController.m; sourceTree = "<group>"; };
+		BC99B9E81F68C02300AF6ECD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BC99B9EA1F68C03700AF6ECD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BC99B9EC1F68C04300AF6ECD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		BC99B9EE1F68C05900AF6ECD /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		BC99B9F01F68C06500AF6ECD /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		BC99B9F21F68C06F00AF6ECD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BC99B9F41F68C09500AF6ECD /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		BC99B9F61F68CA5D00AF6ECD /* AppDelegate+EaseMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+EaseMob.h"; sourceTree = "<group>"; };
+		BC99B9F71F68CA5D00AF6ECD /* AppDelegate+EaseMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+EaseMob.m"; sourceTree = "<group>"; };
+		BC99B9F91F68CC6900AF6ECD /* AppDelegate+ShareSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ShareSDK.h"; sourceTree = "<group>"; };
+		BC99B9FA1F68CC6900AF6ECD /* AppDelegate+ShareSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShareSDK.m"; sourceTree = "<group>"; };
+		BC99B9FC1F68CD0400AF6ECD /* AppDelegate+Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Config.h"; sourceTree = "<group>"; };
+		BC99B9FD1F68CD0400AF6ECD /* AppDelegate+Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Config.m"; sourceTree = "<group>"; };
 		BCA4FE4D1F66741B00C4BE80 /* NSString+RENumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RENumberFormat.h"; sourceTree = "<group>"; };
 		BCA4FE4E1F66741B00C4BE80 /* NSString+RENumberFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RENumberFormat.m"; sourceTree = "<group>"; };
 		BCA4FE4F1F66741B00C4BE80 /* REFormattedNumberField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFormattedNumberField.h; sourceTree = "<group>"; };
@@ -904,16 +927,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC4614F91F5E2C2E00DC54EC /* libsqlite3.tbd in Frameworks */,
+				BC99B9F51F68C09500AF6ECD /* libstdc++.tbd in Frameworks */,
+				BC4614EF1F5E2B8400DC54EC /* ImageIO.framework in Frameworks */,
+				BC99B9F31F68C06F00AF6ECD /* Security.framework in Frameworks */,
+				BC99B9F11F68C06500AF6ECD /* libz.1.2.5.tbd in Frameworks */,
+				BC99B9EF1F68C05900AF6ECD /* libicucore.tbd in Frameworks */,
+				BC99B9ED1F68C04300AF6ECD /* CoreTelephony.framework in Frameworks */,
+				BC99B9EB1F68C03700AF6ECD /* QuartzCore.framework in Frameworks */,
+				BC99B9E91F68C02300AF6ECD /* SystemConfiguration.framework in Frameworks */,
 				BC4614FF1F5E2C9800DC54EC /* libiconv.tbd in Frameworks */,
 				BC4614FD1F5E2C8000DC54EC /* Foundation.framework in Frameworks */,
 				BC4614FB1F5E2C7200DC54EC /* libstdc++.6.0.9.tbd in Frameworks */,
-				BC4614F91F5E2C2E00DC54EC /* libsqlite3.tbd in Frameworks */,
 				BC4614F71F5E2BD900DC54EC /* libc.tbd in Frameworks */,
 				BC4614F51F5E2BC000DC54EC /* MobileCoreServices.framework in Frameworks */,
 				BC4614F31F5E2BAE00DC54EC /* AudioToolbox.framework in Frameworks */,
 				BC381BA01F613EFC009F6AD5 /* Bolts.framework in Frameworks */,
 				BC4614F11F5E2B9F00DC54EC /* libc++.tbd in Frameworks */,
-				BC4614EF1F5E2B8400DC54EC /* ImageIO.framework in Frameworks */,
 				BC381BA11F613EFC009F6AD5 /* Parse.framework in Frameworks */,
 				BC4614ED1F5E2B7700DC54EC /* AVFoundation.framework in Frameworks */,
 				BC4614EB1F5E2B6A00DC54EC /* CoreMedia.framework in Frameworks */,
@@ -975,6 +1005,13 @@
 		7C39AAD8E7718C603F16571A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC99B9F41F68C09500AF6ECD /* libstdc++.tbd */,
+				BC99B9F21F68C06F00AF6ECD /* Security.framework */,
+				BC99B9F01F68C06500AF6ECD /* libz.1.2.5.tbd */,
+				BC99B9EE1F68C05900AF6ECD /* libicucore.tbd */,
+				BC99B9EC1F68C04300AF6ECD /* CoreTelephony.framework */,
+				BC99B9EA1F68C03700AF6ECD /* QuartzCore.framework */,
+				BC99B9E81F68C02300AF6ECD /* SystemConfiguration.framework */,
 				BC4614FE1F5E2C9800DC54EC /* libiconv.tbd */,
 				BC4614FC1F5E2C8000DC54EC /* Foundation.framework */,
 				BC4614FA1F5E2C7200DC54EC /* libstdc++.6.0.9.tbd */,
@@ -1005,6 +1042,12 @@
 			children = (
 				BC086DF31F380E86000084B9 /* AppDelegate.h */,
 				BC086DF41F380E86000084B9 /* AppDelegate.m */,
+				BC99B9F61F68CA5D00AF6ECD /* AppDelegate+EaseMob.h */,
+				BC99B9F71F68CA5D00AF6ECD /* AppDelegate+EaseMob.m */,
+				BC99B9F91F68CC6900AF6ECD /* AppDelegate+ShareSDK.h */,
+				BC99B9FA1F68CC6900AF6ECD /* AppDelegate+ShareSDK.m */,
+				BC99B9FC1F68CD0400AF6ECD /* AppDelegate+Config.h */,
+				BC99B9FD1F68CD0400AF6ECD /* AppDelegate+Config.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -2521,12 +2564,14 @@
 				BCA4FED81F66741B00C4BE80 /* RETextItem.m in Sources */,
 				BC50406F1F3EDDBD00BC07BA /* YTEBusBidModel.m in Sources */,
 				BC086F141F380E86000084B9 /* YTEBaseTableViewController.m in Sources */,
+				BC99B9FB1F68CC6900AF6ECD /* AppDelegate+ShareSDK.m in Sources */,
 				BCA4FEBE1F66741B00C4BE80 /* NSString+RENumberFormat.m in Sources */,
 				BC086F291F380E86000084B9 /* YTEBidderCell.m in Sources */,
 				BC086F4A1F380E86000084B9 /* HMSettingItemSwitch.m in Sources */,
 				BC381BB91F613FBA009F6AD5 /* YTEChatHelper.m in Sources */,
 				BC086F701F380E86000084B9 /* SRGuideAuthServiceModel.m in Sources */,
 				BCD452571F3C464C0020DAC6 /* YTEBusDemandModel.m in Sources */,
+				BC99B9F81F68CA5D00AF6ECD /* AppDelegate+EaseMob.m in Sources */,
 				BCA4FEF21F66741B00C4BE80 /* RETableViewItem.m in Sources */,
 				BC5154E91F5E5DD700BF9A20 /* TZVideoPlayerController.m in Sources */,
 				BC5154D71F5E5DD700BF9A20 /* JKCountDownButton.m in Sources */,
@@ -2586,6 +2631,7 @@
 				BC381B9E1F613EFC009F6AD5 /* YTEPushNotificationViewController.m in Sources */,
 				BC086F471F380E86000084B9 /* HMSettingItemArrow.m in Sources */,
 				BCA4FEC21F66741B00C4BE80 /* RETableViewDateTimeCell.m in Sources */,
+				BC99B9FE1F68CD0400AF6ECD /* AppDelegate+Config.m in Sources */,
 				BCD452431F3C2F5F0020DAC6 /* YTEQuoteOrderView.m in Sources */,
 				BCD452581F3C464C0020DAC6 /* YTEGroupDemandModel.m in Sources */,
 				BC4C4EF81F43E4F600128AD0 /* YTEMyQuoteModel.m in Sources */,

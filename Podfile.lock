@@ -75,15 +75,16 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (~> 3.1.0)
   - EaseMobSDK (from `https://github.com/easemob/sdk-ios-cocoapods.git`)
   - EaseUI (from `https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git`, tag `3.3.4`)
   - IQKeyboardManager (~> 4.0.8)
-  - MJExtension
-  - MJRefresh
+  - MJExtension (~> 3.0.13)
+  - MJRefresh (~> 3.1.12)
   - MMPopupView (~> 1.7.2)
+  - MOBFoundation (~> 3.0.0)
   - ReactiveCocoa (~> 2.5)
-  - ShareSDK3 (= 4.0.0.1)
+  - ShareSDK3 (~> 4.0.0.1)
   - ShareSDK3/ShareSDKConfigurationFile
   - ShareSDK3/ShareSDKExtension
   - ShareSDK3/ShareSDKPlatforms/QQ
@@ -92,10 +93,10 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKUI
   - SMSSDK (= 3.0.0)
   - SwiftyJSON (~> 3.1.4)
-  - TTTAttributedLabel
-  - UITextView+Placeholder
-  - YYModel
-  - YYWebImage
+  - TTTAttributedLabel (~> 2.0.0)
+  - UITextView+Placeholder (~> 1.2.0)
+  - YYModel (~> 1.0.4)
+  - YYWebImage (~> 1.0.5)
 
 EXTERNAL SOURCES:
   EaseMobSDK:
@@ -138,6 +139,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 64b179d4fb8bbf110633db69a14e60d7fd76ee6d
+PODFILE CHECKSUM: d8a9e2097760f891259958f75758bca0979c7cc1
 
 COCOAPODS: 1.1.1

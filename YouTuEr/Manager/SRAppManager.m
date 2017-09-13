@@ -7,7 +7,6 @@
 //
 
 #import "SRAppManager.h"
-#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @implementation SRAppManager
 
@@ -26,10 +25,6 @@
 
 - (NSString *)bidUsername {
     return [[SRUserDefaultManager sharedManager] objectForKey:@"bidUsername"] ? :@"";
-}
-
-- (void)changeDoneBarButtonItemText {
-    [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"完成";
 }
 
 - (BOOL)isLogin {

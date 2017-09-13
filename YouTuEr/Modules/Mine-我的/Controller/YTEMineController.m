@@ -212,14 +212,8 @@
         [config setItemPressedColor:YTEARGBColor(248, 248, 248)];
         [config setInnerMargin:30];
         
-        @weakify(self);
         MMPopupItemHandler block = ^(NSInteger index) {
-            @strongify(self);
-            if (index == 0) {
-                self.view.window.rootViewController = [[YTENavigationController alloc] initWithRootViewController:[[YTELoginController alloc] init]];
-                [[SRUserDefaultManager sharedManager] removeObjectForKey:SR_CLINETID];
-                [[EMClient sharedClient] logout:YES];
-            }
+            if (index == 0) [YTENotifiCenter postNotificationName:KNOTIFICATION_LOGINCHANGE object:@(NO)];
         };
         
         NSArray *items = @[MMItemMake(@"是", MMItemTypeNormal, block),

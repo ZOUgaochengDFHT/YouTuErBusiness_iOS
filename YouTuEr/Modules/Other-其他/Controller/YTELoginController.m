@@ -95,13 +95,7 @@ static NSString *const emPassword = @"qq1111";
         
         [self emregisterWithUsername:phoneNum];
         [self hideProgressView];
-        [self performBlock:^{
-            [[SRMessage sharedMessage] showMessage:returnData[kDataJSONKey_Msg] withType:MessageTypeNotice];
-        } afterDelay:0.5];
-        [[SRUserDefaultManager sharedManager] setObject:returnData[SR_CLINETID] forKey:SR_CLINETID];
-        [[SRUserDefaultManager sharedManager] setObject:returnData[SR_AUTHEN] forKey:SR_AUTHEN];
-        [[SRUserDefaultManager sharedManager] setObject:returnData[SR_HASPROFILE] forKey:SR_HASPROFILE];
-        self.view.window.rootViewController = [returnData[SR_HASPROFILE] isEqual:@"true"] ?  [[YTETabBarController alloc] init] : [[YTENavigationController alloc] initWithRootViewController:[[YTEFillInDataViewController alloc] init]];
+        [YTENotifiCenter postNotificationName:KNOTIFICATION_LOGINCHANGE object:returnData];
     } failureBlock:^(NetworkErrorStatus error, NSURLSessionTask *task) {
         @strongify(self);
         [self hideProgressView];
